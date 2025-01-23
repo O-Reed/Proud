@@ -1,4 +1,4 @@
-package com.oauth.sample;
+package com.oauth.sample.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
