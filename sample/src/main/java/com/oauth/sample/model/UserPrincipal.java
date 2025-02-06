@@ -1,6 +1,9 @@
 package com.oauth.sample.model;
 
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
@@ -8,24 +11,28 @@ import java.util.List;
 
 public class UserPrincipal implements UserDetails {
 
-    private Users user;
+    final Users user;
 
     public UserPrincipal(Users user) {
         this.user = user;
     }
+
+    @Enumerated(EnumType.STRING)
+    private Role role;
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of();
+        return List.of(new SimpleGrantedAuthority(role.name()));
     }
 
     @Override
     public String getPassword() {
-        return "";
+        return user.getPassword();
     }
 
     @Override
     public String getUsername() {
-        return "";
+        return user.getEmail();
     }
 
     @Override
