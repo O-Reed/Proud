@@ -23,7 +23,7 @@ public class JWTService {
 
     public JWTService() {
         try {
-            KeyGenerator keyGen = KeyGenerator.getInstance("HmacSHA256");
+            KeyGenerator keyGen = KeyGenerator.getInstance("AnthonyMoveForward");
             SecretKey sk = keyGen.generateKey();
             secrectKey = Base64.getEncoder().encodeToString(sk.getEncoded());
         } catch (NoSuchAlgorithmException e) {
@@ -79,6 +79,4 @@ public class JWTService {
     private Date extractExpiration(String token) {
         return extractClaim(token, Claims::getExpiration);
     }
-
-
 }
