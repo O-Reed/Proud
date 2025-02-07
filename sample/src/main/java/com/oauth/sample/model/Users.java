@@ -17,11 +17,8 @@ public class Users {
     @Id
     @GeneratedValue
     private Long id;
-    private String username;
-    private String first_name;
-    private String last_name;
+    private String firstname;
+    private String lastname;
     private String email;
-    private String address;
-    private String phone_number;
     private String password;
 }
