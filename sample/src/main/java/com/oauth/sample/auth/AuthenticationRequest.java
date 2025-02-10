@@ -1,6 +1,5 @@
 package com.oauth.sample.auth;
 
-import com.oauth.sample.model.Role;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -10,10 +9,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class RegisterRequest {
-    private String firstname;
-    private String lastname;
+public class AuthenticationRequest {
     private String email;
-    private String password;
-    private Role role;
+    String password;
 }
