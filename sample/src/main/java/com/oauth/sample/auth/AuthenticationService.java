@@ -1,7 +1,4 @@
 package com.oauth.sample.auth;
-
-import com.nimbusds.openid.connect.sdk.AuthenticationRequest;
-import com.nimbusds.openid.connect.sdk.AuthenticationResponse;
 import com.oauth.sample.model.Role;
 import com.oauth.sample.repository.UserRepository;
 import com.oauth.sample.service.JWTService;
