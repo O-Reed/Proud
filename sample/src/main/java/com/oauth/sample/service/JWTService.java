@@ -41,13 +41,8 @@ public class JWTService {
                 .issuedAt(new Date(System.currentTimeMillis()))
                 .expiration(new Date(System.currentTimeMillis() + 60 * 60 * 30))
                 .and()
-                .signWith(getKey())
+                .signWith(getSignInKey())
                 .compact();
-    }
-
-    private SecretKey getKey() {
-        byte[] keyBytes = Decoders.BASE64.decode(secrectKey);
-        return Keys.hmacShaKeyFor(keyBytes);
     }
 
     public String extractUserName(String token) {
@@ -61,7 +56,7 @@ public class JWTService {
 
     private Claims extractAllClaims(String token) {
         return Jwts.parser()
-                .verifyWith(getKey())
+                .verifyWith(getSignInKey())
                 .build()
                 .parseSignedClaims(token)
                 .getPayload();
@@ -78,5 +73,10 @@ public class JWTService {
 
     private Date extractExpiration(String token) {
         return extractClaim(token, Claims::getExpiration);
+    }
+
+    private SecretKey getSignInKey() {
+        byte[] keyBytes = Decoders.BASE64URL.decode(secrectKey);
+        return Keys.hmacShaKeyFor(keyBytes);
     }
 }

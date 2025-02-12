@@ -1,7 +1,7 @@
 package com.oauth.sample.service;
 
 import com.oauth.sample.model.UserPrincipal;
-import com.oauth.sample.model.Users;
+import com.oauth.sample.model.User;
 import com.oauth.sample.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -17,7 +17,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Users user = userRepository.findByUsername(username);
+        User user = userRepository.findByUsername(username);
 
         if( user == null ){
             System.out.println("User Not Found");
